@@ -31,59 +31,70 @@ let estadoStr = JSON.stringify(estado);
 localStorage.setItem('estado', estadoStr);
 }
 
-function salvarCliente(nome) {
-    this.nome = nome;
-
-    let input = document.getElementById('nome_cliente');
-    let nome = input.value;
-    let nomestr = JSON.stringify(nome);
-    localStorage.setItem('nome', nomestr);
-
-
-let input = cpf1 (number)
-    this.number = number
-    let input = document.getElementById('cpf');
-    let number = input.value;
-    let cpfs = JSON.stringify(number);
-    localStorage.setItem('number', cpfs);
-}
+function Cliente(nome, cpf, cnpj, cep, cidade, bairro, rua, numero,
+    celular, telefone, email){
+        this.nome = nome;
+        this.cpf =  cpf;
+        this.cnpj = cnpj;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.rua = rua;
+        this.numero = numero;
+        this.celular = celular;
+        this.telefone = telefone;
+        this.email = email;
+    }
 
 function salvarCliente() {
   
     let input = document.getElementById('nome_cliente');
     let nome = input.value;
     
-    let input = document.getElementById('cpf');
+    input = document.getElementById('cpf');
     let cpf = input.value;
 
-    let input = document.getElementById('cnpj');
+    input = document.getElementById('cnpj');
     let cnpj = input.value;
 
-    let input = document.getElementById('cep');
+    input = document.getElementById('cep');
     let cep = input.value;
 
-    let input = document.getElementById('nome_cidade');
+    input = document.getElementById('nome_cidade');
     let cidade = input.value;
 
-    let input = document.getElementById('nome_bairro');
+    input = document.getElementById('nome_bairro');
     let bairro = input.value;
 
-    let input = document.getElementById('nome_rua');
+    input = document.getElementById('nome_rua');
     let rua = input.value;
 
-    let input = document.getElementById('num');
+    input = document.getElementById('num');
     let numero = input.value;
 
-    let input = document.getElementById('cel');
+    input = document.getElementById('cel');
     let celular = input.value;
 
-    let cliente = new Cliente(nome, cpf, cnpj, cep, cidade,
-        bairro, rua, numero, celular);
+    input = document.getElementById('telefone');
+    let telefone = input.value;
 
-    let listEstadoStr = localStorage.getItem('listaEstado');
-    let listEstado = [];
-    if (listEstadoStr != null) {
-        listEstado = JSON.parse(listEstadoStr);
+    input = document.getElementById('email');
+    let email = input.value;
+
+
+    let cliente = new Cliente(nome, cpf, cnpj, cep, cidade,
+        bairro, rua, numero, celular,telefone, email);
+
+    let listClientestr = localStorage.getItem('listaCliente');
+    let listCliente = [];
+    if (listClientestr != null) {
+        listCliente = JSON.parse(listClientestr);
     }
 
+    listCliente.push(cliente);
+
+    listClientestr = JSON.stringify(listCliente);
+
+    localStorage.setItem('listaCliente', listClientestr);
 }
+
